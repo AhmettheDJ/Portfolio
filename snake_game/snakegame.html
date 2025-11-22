@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake Spiel | Portfolio</title>
+   <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="language-switcher" id="language-switcher">
+        <button class="lang-btn active" data-lang="de">Deutsch</button>
+        <button class="lang-btn" data-lang="en">English</button>
+    </div>
+    
+    <div class="container">
+        <header>
+            <h1 data-de="SNAKE SPIEL" data-en="SNAKE GAME">SNAKE SPIEL</h1>
+            <p class="subtitle" data-de="Eine moderne Variante eines Klassiker-Arcade-Spiels" data-en="A modern twist on a classic arcade game">Eine moderne Variante eines Klassiker-Arcade-Spiels</p>
+        </header>
+        
+        <div class="game-container">
+            <div class="stats">
+                <div class="stat-box">
+                    <div class="stat-label" data-de="PUNKTE" data-en="SCORE">PUNKTE</div>
+                    <div class="stat-value" id="score">0</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label" data-de="BESTE PUNKTZAHL" data-en="HIGH SCORE">BESTE PUNKTZAHL</div>
+                    <div class="stat-value" id="high-score">0</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label" data-de="LÄNGE" data-en="LENGTH">LÄNGE</div>
+                    <div class="stat-value" id="length">1</div>
+                </div>
+            </div>
+            
+            <div class="game-board">
+                <canvas id="board"></canvas>
+                <div class="particles" id="particles"></div>
+                <div class="game-over" id="game-over">
+                    <h2 data-de="SPIEL VORBEI" data-en="GAME OVER">SPIEL VORBEI</h2>
+                    <p id="game-over-text" data-de="Deine Punktzahl: " data-en="Your score: ">Deine Punktzahl: <span id="final-score">0</span></p>
+                    <button id="restart-btn" data-de="NOCHMAL SPIELEN" data-en="PLAY AGAIN">NOCHMAL SPIELEN</button>
+                </div>
+            </div>
+            
+            <div class="controls">
+                <button id="start-btn" data-de="SPIEL STARTEN" data-en="START GAME">SPIEL STARTEN</button>
+                <button id="pause-btn" data-de="PAUSE" data-en="PAUSE">PAUSE</button>
+            </div>
+            
+            <div class="instructions">
+                <h3 data-de="WIE MAN SPIELT" data-en="HOW TO PLAY">WIE MAN SPIELT</h3>
+                <p data-de="Benutze die Pfeiltasten, um die Schlange zu steuern" data-en="Use arrow keys to control the snake">Benutze die Pfeiltasten, um die Schlange zu steuern</p>
+                <p data-de="Iss das leuchtende Futter, um zu wachsen und Punkte zu sammeln" data-en="Eat the glowing food to grow and earn points">Iss das leuchtende Futter, um zu wachsen und Punkte zu sammeln</p>
+                <p data-de="Vermeide es, die Wände oder dich selbst zu berühren" data-en="Avoid hitting the walls or yourself">Vermeide es, die Wände oder dich selbst zu berühren</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="snakegame.js"></script>
+    
+    <script>
+        // Spracheinstellung speichern und laden
+        let currentLanguage = localStorage.getItem('snakeGameLanguage') || 'de';
+        
+        // Alle Elemente mit Sprach-Attributen übersetzen
+        function setLanguage(lang) {
+            currentLanguage = lang;
+            localStorage.setItem('snakeGameLanguage', lang);
+            
+            // Alle Elemente mit data-de und data-en Attributen durchgehen
+            document.querySelectorAll('[data-de][data-en]').forEach(element => {
+                const text = element.getAttribute(`data-${lang}`);
+                // Nur Text-Knoten ersetzen, keine Kind-Elemente
+                if (element.id === 'game-over-text') {
+                    element.innerHTML = text + '<span id="final-score">0</span>';
+                } else {
+                    element.textContent = text;
+                }
+            });
+            
+            // Sprachschalter aktualisieren
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.getAttribute('data-lang') === lang) {
+                    btn.classList.add('active');
+                }
+            });
+        }
+        
+        // Sprach-Buttons initialisieren
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                setLanguage(btn.getAttribute('data-lang'));
+            });
+        });
+        
+        // Initiale Sprache setzen
+        setLanguage(currentLanguage);
+    </script>
+
+</body>
+</html>
