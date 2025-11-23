@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>IT Portfolio - Ahmet Oezturk</title>
+    <meta name="description" content="Portfolio von Ahmet Oezturk – Medientechniker, Webentwickler und Programmierer.">
+    <meta name="author" content="Ahmet Oezturk">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+    <style>
+
+    </style>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+    <header>
+        <h1>Ahmet Öztürk</h1>
+        <p>Medientechnicker | Programmierer | Web entwickler</p>
+        <img src="PP_Ahmet.png" alt="Profilbild von Ahmet Öztürk"
+            style="border-radius: 50%; width: 150px; height: 150px; object-fit: cover; border: 4px solid #fff;"
+            draggable="false">
+
+
+    </header>
+    <nav>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+        <button onclick="toggleTheme()" id="theme-toggle">
+            🌙 Theme
+        </button> 
+        <button id="lang-btn">EN</button>
+       
+
+    </nav>
+    <main>
+        <section id="about">
+            <h2>Über Mich</h2>
+            <p>
+                Ich bin ein leidenschaftliche und motivierte Schüler an der Htl Rennweg in Wien,
+                mein bereich ist Medientechnik an der Fachschule HTL Rennweg.
+
+                Ich bin ein Medientechniker mit umfangreicher Erfahrung in der Systemadministration,
+                Netzwerkverwaltung und Webentwicklung. Ich liebe es, technische Herausforderungen zu lösen und robuste
+                Lösungen zu liefern.
+
+                Mein Ziel ist es, meine Fähigkeiten weiterzuentwickeln und in der IT-Branche Fuß zu fassen, um
+                innovative Projekte zu realisieren und einen positiven Beitrag zu leisten.
+            </p>
+            <ul> Praktikum Erfahrungen:
+                <li>WKO Inhouse GmbH (Schnupperpraktikum)-November 2022</li>
+            </ul>
+        </section>
+        <section class="skills" , id="skills">
+            <h2>Skills</h2>
+            <ul>
+                <li>System Administration (Windows, Linux)</li>
+                <li>Netzwerk konfiguration & Sicherheit</li>
+                <li>Webentwicklung (HTML, CSS, JavaScript, PHP, MySQL)</li>
+                <li>Desktopsoftwareentwicklung mit C++ und java</li>
+                <li>Datenbankverwaltung (MySQL, PostgreSQL, Microsoft Access)</li>
+                <li>Adobe Programme unter anderem
+                    <ul>
+                        <li class="lists-Adobe">Photoshop</li>
+                    </ul>
+                    <ul>
+                        <li class="lists-Adobe">Illustrator</li>
+                    </ul>
+                    <ul>
+                        <li class="lists-Adobe">Indesign</li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+        <section id="projects">
+            <h2>Projeckte</h2>
+            <div class="projects">
+                <div class="project">
+                        <!-- Projeckt:DONE -->
+                    <h3>Zufäälige Namensgenerator</h3>
+                    <p>Ein Javascript projeckt wo man zufällige namen durch das mäßigen mischen von vokalen und
+                        mitlauten buchstaben.
+                        Die namenlänge und anzahl der generierten namen Können e nach benutzer Eingabe variieren.
+                    </p>
+                    <a href="https://github.com/AhmettheDJ/Portfolio/tree/main/random_name_gen" target="_blank" class="DONE">View on GitHub</a> <br>
+                    <a href="random_name_gen/Random_Name_Generator.html" target="_blank" class="DONE">Live Demo</a>
+                </div>
+                <!-- Projeckt:ON WORK -->
+                <div class="project">
+                    <h3>Network Monitoring Dashboard</h3>
+                    <p>Ein real time netztwerküberwachungssoftware erstellt mit C++ und Qt. <mark>(Das ist keine web projeckt,daher gibt
+                            es nur videos und Fotos von diesen Projekt)</mark></p>
+                    <a href="#" target="_blank" class="WORK">View on GitHub</a> <br>
+                    <a href="#" target="_blank" class="WORK">Demo </a>
+                </div>
+
+                <!-- Projeckt:ON WORK -->
+                <div class="project">
+                    <h3> Snake Game-Webversion </h3>
+                    <p>Ein klassisches Snake-Spiel, das mit HTML, CSS und JavaScript entwickelt wurde. Der Spieler steuert die Schlange, um Äpfel zu essen und dabei länger zu werden, während er Kollisionen mit den Wänden und sich selbst vermeidet.</p>
+                    <a href="https://github.com/AhmettheDJ/Portfolio/tree/main/snake_game" target="_blank" class="DONE">View on GitHub</a><br>
+                    <a href="snake_game/snakegame.html" target="_blank" class="DONE">Live Demo</a>
+                </div>
+                <!-- Projeckt:ON WORK -->
+                <div class="project">
+                    <h3>Admin Panel</h3>
+                    <p>Ein Admin seite für eine firma für verwalten der Mitarbeiterdaten in einem firma
+                        erstellt mit Html&css,PHP und MySQL
+                    </p>
+                    <a href="#" target="_blank" class="WORK">View on GitHub</a><br>
+                    <a href="Admin_panel/panel.html" target="_blank" class="DONE">Live Demo</a>
+                </div>
+                <!-- Projeckt:ON WORK -->
+
+                <div class="project">
+                    <h3>Wetter Website</h3>
+                    <p>Entwickelte Wetter webseite mithilfe der Html&Css und javascript basierend of myweather API.</p>
+                    <a href="https://github.com/AhmettheDJ/Portfolio/tree/main/weatherApp" target="_blank" class="DONE">View on GitHub</a> <br>
+                    <a href="weatherApp/index.html" target="_blank" class="DONE">Live Demo</a>
+
+                </div>
+                    <div class="project">
+                    <h3>Simple Checklist</h3>
+                    <p>Ein einfaches Checklisten-Tool zur Verwaltung von Aufgaben und Notizen.</p>
+                    <a href="https://github.com/AhmettheDJ/Portfolio/tree/main/checkliste" target="_blank" class="DONE">View on GitHub</a> <br>
+                    <a href="checkliste/chlist.html" target="_blank" class="DONE">Live Demo</a>
+
+                </div>
+                <div class="project">
+                    <h3>Weitere Projeckten</h3>
+                    <p>Weitere Projeckten kommen bald ...</p>
+                    <a href="#" target="_blank">View on GitHub</a>
+                    <!-- <a href="#" target="_blank">Live Demo</a>-->
+                </div>
+            </div>
+        </section> <br><br>
+        <section id="contact">
+            <h2>Kontakt</h2>
+            <p>📧 <a href="mailto:oezturkahmet270@gmail.com">oezturkahmet270@gmail.com</a></p>
+            <p>💼 <a href="https://github.com/ahmetoezturk" target="_blank">GitHub</a></p> 
+             <a href="Ahmet_Oezturk_Lebenslauf.pdf" download class="cv-download">Lebenslauf herunterladen</a> <br>
+            <p>📞 <a href="tel:+436705569377">+43 670 5569377</a></p>
+            <p>Nachricht Senden</p>
+            <form action="https://formspree.io/f/xnngrdwa" method="POST">
+                <label>
+                    Your email:
+                    <input type="email" name="email"> <br>
+                </label>
+                <label>
+                    Your message:
+                    <textarea name="message"></textarea> 
+                </label>
+                <!-- your other form fields go here -->
+                <button type="submit">Send</button>
+            </form>
+        </section>
+    </main>
+    <script src="script.js"></script>
+
+
+</body>
+
+</html>
+
+<!--
+   Falls Sie Fragen haben, kontaktieren Sie mich gerne.
+   Ich hoffe, mein Portfolio hat Ihr Interesse geweckt
+   und ich freue mich auf Ihre Rückmeldung. 😁
+  -->
+
+<!--
+   If you have any questions, feel free to contact me.
+   I hope my portfolio has piqued your interest
+   and I look forward to your feedback. 😁
+
+    -->
+
+  <!--   Donut ASCII Art für Sie! Donut art for you!   🍩
+                  ========
+                =============
+             =======00000======
+             ======0000000======
+             ======0000000======
+              ======00000======
+              ================
+                  ======== 
+  
+
+                   End of Donut ASCII Art  🍩
+  --> // 

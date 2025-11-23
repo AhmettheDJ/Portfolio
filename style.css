@@ -1,0 +1,462 @@
+
+/* ========== Grundstruktur ========== */
+ * {
+        box-sizing: border-box; /* Wichtig für konsistente Breitenberechnung */
+    }
+
+    /* Der wichtigste Teil: Entfernen des Standard-Margins vom Body */
+    body {
+        margin: 0; /* Entfernt den Außenabstand, der den weißen Rand verursacht */
+        padding: 0; /* Stellt sicher, dass kein Innenabstand vorhanden ist */
+        /* Dein bisheriges Body-Styling kommt hier drunter */
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+    }
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    line-height: 1.6;
+}
+
+alert {
+    padding: 15px;
+    background-color: #f44336; /* Rote Hintergrundfarbe */
+    color: rgb(255, 255, 255); /* Weiße Schriftfarbe */
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #f8f9fb;
+    color: #222;
+    line-height: 1.6;
+}
+
+/* ========== Überschriften ========== */
+h1, h2, h3 {
+    font-weight: 600;
+}
+
+h1 {
+    font-size: 2.2rem;
+    margin-bottom: 0.3rem;
+}
+
+h2 {
+    color: #4a148c;
+    border-bottom: 2px solid #7b1fa2;
+    display: inline-block;
+    padding-bottom: 0.2rem;
+}
+
+/* ========== Header ========== */
+header {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, #4a148c, #7b1fa2);
+    color: #fff;
+    text-align: center;
+    padding: 1rem 0;
+    font-size: 90%;
+}
+
+header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 1;
+}
+
+header h1,
+header p,
+header img {
+    position: relative;
+    z-index: 2;
+}
+
+header p {
+    font-weight: 500;
+    margin: 0.5rem 0 1rem;
+}
+
+header img {
+    margin-top: 0.5rem;
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    border: 4px solid #130b0b;
+    object-fit: cover;
+    
+    
+}
+
+/* ========== Navigation ========== */
+nav {
+    position: sticky;
+    top: 0;
+    background: #1e1e1e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5rem;
+    padding: 2rem;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+nav a {
+    color: #fff;
+    font-weight: 600;
+    transition: 0.2s;
+    text-decoration: none;
+}
+
+nav a:hover {
+    color: #ffd54f;
+}
+
+nav button {
+    background: #7b1fa2;
+    color: #fff;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+nav button:hover {
+    background: #9c27b0;
+    transform: scale(1.05);
+}
+
+#email {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    margin-top: 0.5rem;
+    display: inline-block;
+}
+
+/* ========== Hauptbereich ========== */
+main {
+    max-width: 900px;
+    margin: 2rem auto;
+    background: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    color: #333;
+}
+
+/* ========== About-Sektion ========== */
+#about {
+    padding: 1rem;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px #0001;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+#about:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 12px #0002;
+}
+
+/* ========== Projekte ========== */
+.projects {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.project {
+    background: #f9f9f9;
+    padding: 1rem;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px #0001;
+    border-left: 4px solid #7b1fa2;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease, transform 0.2s, box-shadow 0.2s;
+}
+
+.project::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(123, 31, 162, 0.1), transparent);
+    transition: left 0.5s;
+}
+
+.project:hover::before {
+    left: 100%;
+}
+
+.project:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 12px #0002;
+}
+
+.project h3 {
+    margin: 0 0 0.5rem 0;
+}
+
+/* ========== Skills ========== */
+.skills {
+    margin: 2rem 0;
+}
+
+.skills ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 10px;
+}
+
+.skills li {
+    background: #f5f5f5;
+    padding: 10px 15px;
+    border-radius: 6px;
+    transition: background 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.skills li:hover {
+    background: #e9e9e9;
+}
+
+.lists-Adobe {
+    font-weight: 500;
+    font-size: 1rem;
+    margin: 1px 0;
+}
+
+.skills li ul,
+.skills li .lists-Adobe {
+    margin: 0;
+    padding-left: 1rem;
+    list-style-position: inside;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.lists-Adobe li {
+    display: block;
+    width: 100%;
+    background: transparent;
+    padding: 0.5rem 0.75rem;
+    margin: 0.35rem 0;
+    border-radius: 6px;
+    box-sizing: border-box;
+}
+
+.adskill {
+    width: auto;
+}
+
+/* ========== Dark Mode ========== */
+.dark {
+    background: #121212;
+    color: #fff;
+}
+
+.dark .skills li {
+    background: #2a2a2a;
+}
+
+.dark .skills li:hover {
+    background: #3a3a3a;
+}
+
+body.dark .project,
+main.dark .project {
+    background: #232323;
+    color: #fff;
+    box-shadow: 0 2px 8px #0006;
+}
+
+body.dark #about,
+main.dark #about {
+    background: #232323;
+    color: #fff;
+    box-shadow: 0 2px 8px #0006;
+}
+
+/* ========== Dark Mode Formulare ========== */
+body.dark input,
+body.dark textarea,
+body.dark select,
+body.dark button {
+    background: #2b2b2b;
+    color: #eaeaea;
+    border: 1px solid #3a3a3a;
+    border-radius: 6px;
+    box-shadow: none;
+}
+
+body.dark input[type="submit"] 
+{
+    background: linear-gradient(#3a3a3a, #2b2b2b);
+    color: #fff;
+    border: 1px solid #4a4a4a;
+    padding: 6px 10px;
+    cursor: pointer;
+}
+
+body.dark input:focus,
+body.dark textarea:focus,
+body.dark select:focus,
+body.dark button:focus {
+    outline: 2px solid rgba(123, 31, 162, 0.25);
+    outline-offset: 2px;
+}
+
+body.dark input::placeholder,
+body.dark textarea::placeholder {
+    color: #bdbdbd;
+    opacity: 1;
+}
+
+/* ========== Responsives Design ========== */
+
+
+/* Regeln, die du in deinem HTML definiert hast, sollten idealerweise in die style.css */
+
+/* Mobile-spezifische Regeln */
+@media (max-width: 768px) {
+    body {
+        font-size: 16px;
+        padding: 0; /* Entferne äußeres Padding vom Body, da main genug hat */
+    }
+
+    /* Navigationsanpassungen */
+    nav {
+        flex-direction: column; 
+        padding: 1rem; 
+        gap: 0.5rem; 
+        position: relative; 
+        /* Entfernt den Schatten, wenn sie nicht mehr am oberen Rand klebt */
+        box-shadow: none;
+    }
+
+    nav a {
+        display: block; /* Muss nicht mehr display:block sein, da flex-direction: column */
+        padding: 8px; 
+        width: 100%; 
+        text-align: center;
+        border-radius: 4px;
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+    
+    #theme-toggle {
+        margin-top: 10px;
+    }
+    
+    /* Hauptinhalts- und Sektionenanpassungen */
+    main {
+        margin: 1rem 0.5rem; /* Etwas Abstand an den Seiten */
+        padding: 1rem;
+    }
+    
+    header h1 {
+        font-size: 2.2rem; /* Behalte die Größe oder erhöhe leicht */
+    }
+
+    /* Projekt- und Skill-Grid in eine einzige Spalte umwandeln */
+    .projects {
+        grid-template-columns: 1fr; 
+        gap: 1rem;
+    }
+    
+    .skills ul {
+        grid-template-columns: 1fr; 
+    }
+}
+
+
+/* Styling für das Textfeld des Kontaktformulars */
+#contact form textarea {
+    /* 1. Unprofessionelle Vergrößerung verhindern */
+    resize: none; 
+
+    /* 2. Standard-Browser-Styles resetten */
+    width: 100%;
+    padding: 12px 15px; /* Angenehmer Innenabstand */
+    border: 1px solid #ccc; /* Helle Umrandung */
+    border-radius: 20px; /* Stark abgerundete Ecken (wie bei Chat-Apps) */
+    min-height: 100px; /* Definiert die Mindesthöhe */
+    margin-top: 5px;
+    margin-bottom: 15px;
+    
+    /* 3. Übergänge für Fokus-Effekte */
+    transition: all 0.3s ease;
+    
+    /* 4. Schriftart anpassen (damit es konsistent zur Seite ist) */
+    font-family: 'Poppins', sans-serif; 
+    font-size: 1rem;
+    line-height: 1.5; /* Gute Lesbarkeit */
+}
+
+/* 5. Fokus-Effekt (wenn der Benutzer hineinklickt) */
+#contact form textarea:focus {
+    border-color: #7b1fa2; /* Violette Akzentfarbe beim Fokus */
+    box-shadow: 0 0 0 3px rgba(74, 20, 140, 0.2); /* Sanfter Glow */
+    outline: none; /* Entfernt den hässlichen Standard-Fokus-Rahmen des Browsers */
+}
+
+/* 6. Dark Mode Anpassung */
+.dark #contact form textarea {
+    background: #2b2b2b;
+    color: #eaeaea;
+    border: 1px solid #4a4a4a;
+}
+
+/* Container (z.B. das Label oder ein neues div) auf Flex setzen */
+#contact label:nth-of-type(2) { /* Das Label, das die Textarea umschließt */
+    display: flex;
+    flex-direction: column; /* Label-Text über der Textarea */
+}
+
+/* Den Senden-Button separat stylen und positionieren */
+#contact form button[type="submit"] {
+    /* ... Dein Button-Styling ... */
+    margin-top: 10px; 
+    align-self: flex-start; /* Optional: Button linksbündig */
+}
+
+#contact form button[type="submit"] {
+    background-color: #9c27b0; /* Etwas hellere Farbe beim Hover */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    color: white;
+    cursor: pointer;
+}
+    #contact form button[type="submit"]:hover {
+    background-color: #7b1fa2; /* Ursprüngliche Farbe beim Hover */
+    transform: scale(1.05); /* Leichter Vergrößerungseffekt beim Hover */
+}
+
+body.dark button[type="submit"] {
+    background-color: #7b1fa2;
+    color: white;
+}
+
+
+mark {
+    background-color: #ffeb3b;
+    color: #000;
+    padding: 0 4px;
+    border-radius: 2px;
+    opacity: 0.7;
+}
+
