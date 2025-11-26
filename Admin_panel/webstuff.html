@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Agent Information</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        /* CSS RESET - FÜR ALLE ELEMENTE (optional, aber empfohlen) */
+    * {
+        box-sizing: border-box; /* Wichtig für konsistente Breitenberechnung */
+    }
+
+    /* Der wichtigste Teil: Entfernen des Standard-Margins vom Body */
+    body {
+        margin: 0; /* Entfernt den Außenabstand, der den weißen Rand verursacht */
+        padding: 0; /* Stellt sicher, dass kein Innenabstand vorhanden ist */
+        /* Dein bisheriges Body-Styling kommt hier drunter */
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+    }
+    
+        h2 {
+            color: #333;
+        }
+      /* Neuer Keyframe für den Data-Flow-Border */
+@keyframes dataFlow {
+    0% { border-color: #ccc; box-shadow: 0 0 0 0 rgba(0, 86, 179, 0.4); }
+    50% { border-color: #0056b3; box-shadow: 0 0 10px 0 rgba(0, 86, 179, 0.6); } /* Blau-Puls */
+    100% { border-color: #ccc; box-shadow: 0 0 0 0 rgba(0, 86, 179, 0.4); }
+}
+
+/* Update der #userAgent Regel */
+#userAgent {
+    margin-top: 20px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    border-radius: 5px;
+    /* Die Animation hinzufügen */
+    animation: dataFlow 3s infinite ease-in-out; 
+}
+        #userAgent p {
+            margin: 5px 0;
+            line-height: 1.5;
+        }
+        #userAgent strong {
+            color: #0056b3;
+        }
+        .loading-message {
+            color: gray;
+        }
+        #dummyuseragent {
+            margin-top: 30px;
+            padding: 15px;
+            border: 2px dashed #ff8c00; /* Orange Akzent */
+            background-color: #fff7e6; /* Helle orange Hintergrundfarbe */
+            font-style: italic;
+            border-radius: 5px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #aee8fb;
+            font-size: large;
+        }
+
+
+        button {
+            background-color: #1b0856;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            margin: 5px;
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: medium;
+        }
+
+        button:hover {
+            background-color: #3333ff;
+            font-size: large;
+            transform: scale(1.15);
+            
+        }
+
+      /* Erweitertes CSS für die Navigationsleiste */
+nav {
+    margin-bottom: 25px;
+    padding: 10px;
+    background-color: #e0e0e0;
+    border-radius: 10px;
+    /* Schatten für mehr Tiefe */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
+    /* Animationen kombinieren: Farbe wechseln + leichtes Atmen */
+    animation: navAnimation 10s infinite alternate, 
+               breathingShadow 2s infinite alternate; 
+}
+
+@keyframes navAnimation {
+    0% { background-color: #1b0856; } /* Dunkelblau */
+    33% { background-color: #800080; } /* Lila */
+    66% { background-color: #3333ff; } /* Hellblau */
+    100% { background-color: #1b0856; } /* Zurück zu Dunkelblau */
+}
+
+/* Neuer Keyframe für den Puls-Schatten */
+@keyframes breathingShadow {
+    0% { transform: scale(1); box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); }
+    100% { transform: scale(1.01); box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); }
+}
+
+    
+
+    </style>
+</head>
+<body>
+ <center>  <nav> <button><a href="#userAgent">User Agent</a></button> | <button><a href="#dummyuseragent">Dummy User Agent</a></button>  | <button><a href="panel.html">Zurück Zu Übersicht</a></button></nav></center>
+    <h2>User Agent und System Informationen</h2>
+    
+    <div id="userAgent">
+        <p><strong>Dein User Agent String:</strong> <span id="uaString">Lade...</span></p>
+        <p><strong>Browser Details (lokal):</strong> <span id="browserDetails">Lade...</span></p>
+        <p><strong>Deine IP-Adresse:</strong> <span id="ipAddress" class="loading-message">Lade...</span></p>
+        <p><strong>Dein Standort:</strong> <span id="location" class="loading-message">Lade...</span></p>
+        <p><strong>Aktuelles Datum und Uhrzeit (lokal):</strong> <span id="localDateTime">Lade...</span></p>
+        <p><strong>Aktuelle Stunde (lokal):</strong> <span id="localHour">Lade...</span></p>
+    </div>
+
+    <div id="dummyuseragent">
+        <h3>Dummy User Agent Beispiel</h3>
+        <p>Ein User Agent nach Standard-Format:</p> 
+        <p><code>MyApp/1.0 (Windows NT 10.0; Win64; x64) MyEngine/2.0</code></p>
+        <p>Zusätzliche Infos können sein:</p>
+        <p>Standort: Vienna, Austria</p>
+        <p>IP-Adresse: 127.0.0.1</p>
+        <p>Datum und Uhrzeit: 2024-06-15T12:34:56Z</p>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const uaStringElement = document.getElementById('uaString');
+            const browserDetailsElement = document.getElementById('browserDetails');
+            const ipAddressElement = document.getElementById('ipAddress');
+            const locationElement = document.getElementById('location');
+            const localDateTimeElement = document.getElementById('localDateTime');
+            const localHourElement = document.getElementById('localHour');
+            
+            // 1. User Agent String und lokale Zeit anzeigen
+            const userAgent = navigator.userAgent;
+            uaStringElement.textContent = userAgent;
+
+            const now = new Date();
+            localDateTimeElement.textContent = now.toLocaleString();
+            localHourElement.textContent = now.getHours();
+
+            // 2. Browser-Parsing-Funktion
+            function parseUserAgent(ua) {
+                const browser = {
+                    isChrome: /Chrome/.test(ua) && !/Edg/.test(ua),
+                    isFirefox: /Firefox/.test(ua),
+                    isSafari: /Safari/.test(ua) && !/Chrome/.test(ua) && !/Edg/.test(ua),
+                    isEdge: /Edg/.test(ua),
+                    isIE: /Trident/.test(ua)
+                };
+                
+                let details = "Unbekannt";
+                if (browser.isChrome) details = "Chrome (oder Chromium-basiert)";
+                else if (browser.isFirefox) details = "Firefox";
+                else if (browser.isEdge) details = "Edge";
+                else if (browser.isSafari) details = "Safari";
+                else if (browser.isIE) details = "Internet Explorer";
+                
+                return details;
+            }
+
+            browserDetailsElement.textContent = parseUserAgent(userAgent);
+            
+            // 3. IP-Adresse abrufen (asynchron)
+            fetch('https://api.ipify.org?format=json')
+                .then(response => response.json())
+                .then(data => {
+                    ipAddressElement.textContent = data.ip;
+                    ipAddressElement.classList.remove('loading-message');
+                })
+                .catch(error => {
+                    console.error('Fehler beim Abrufen der IP-Adresse:', error);
+                    ipAddressElement.textContent = 'Fehler beim Laden';
+                });
+
+            // 4. Standort abrufen (asynchron)
+            fetch('https://ipapi.co/json/')
+                .then(response => response.json())
+                .then(data => {
+                    const location = `${data.city}, ${data.region}, ${data.country_name}`;
+                    locationElement.textContent = location;
+                    locationElement.classList.remove('loading-message');
+                })
+                .catch(error => {
+                    console.error('Fehler beim Abrufen des Standorts:', error);
+                    locationElement.textContent = 'Fehler beim Laden';
+                });
+            
+
+                
+        });
+    </script>
+</body>
+</html>
+
+
+<!-- Danke für eure Interesse an diesem Code!
+  Wenn ihr Fragen habt oder weitere Anpassungen benötigt, lasst es mich wissen.
+  Viel Erfolg bei der Implementierung!
+
+
+
+  Thank you for your interest in this code!  If you have any questions or need further adjustments, let me know.
+  Good luck with the implementation!
+-->

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Panel - Mitarbeiterverwaltung</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="db.js"></script>
+</head>
+
+<body>
+ <body>
+    <div id="customAlertOverlay">
+        <div id="customAlertBox">
+            <h3>Sicherheitshinweis und Demo-Information</h3>
+            <p>Aus Sicherheitsgründen existiert die Backend Funktionalität dieses Admin Panels **nicht in dieser Demo-Version**.</p>
+            <p>Sie können jedoch den originalen Code (inkl. PHP-Logik) auf GitHub einsehen.</p>
+            <div class="alert-actions">
+                <button id="alertOk">Verstanden (Zur Demo)</button>
+                <button id="alertGithub">Zum GitHub Repository</button>
+            </div>
+        </div>
+    </div>
+    <div class="sidebar">
+        <h2>Admin Panel</h2>
+        <ul>
+            <li><a href="../Portfolio/Oezturk-Portfolio.html">Portfolio</a></li>
+            <li><a href="webstuff.html">Web Stuff</a></li>
+        </ul>
+    </div>
+    <div class="main">
+
+        <div class="search-bar">
+            <form action="panel.php" method="post">
+                <input type="text" name="search" placeholder="Suche nach Mitarbeitern...">
+                <button type="submit">Suchen</button>
+            </form> 
+        </div>
+        <h2>Mitarbeiterliste</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Rolle</th>
+                    <th>Email</th>
+                    <th>Gehalt</th>
+                    <th>Geschlecht</th>
+                    <th>Einstellungsdatum</th>
+                    <th>Aktionen</th>
+                </tr>
+            </thead>
+            <tbody>
+            
+
+                <script>
+                    const tbody = document.querySelector('tbody');
+                    workers.forEach(worker => {
+                        const row = document.createElement('tr');
+                        row.innerHTML = `
+                            <td>${worker.id}</td>
+                            <td>${worker.name}</td>
+                            <td>${worker.role}</td>
+                            <td>${worker.email}</td>
+                            <td>${worker.salary.toFixed(2)} €</td>
+                            <td>${worker.gender === 'male' ? 'Männlich' : 'Weiblich'}</td>
+                            <td>${new Date(worker.hire_date).toLocaleDateString('de-DE')}</td>
+                            <td>
+                                <button onclick="editWorker(${worker.id})">Bearbeiten</button>
+                                <button onclick="deleteWorker(${worker.id})">Löschen</button>
+                            </td>
+                        `;
+                        tbody.appendChild(row);
+                    });
+                </script>
+            </tbody>
+        </table>
+
+    </div>
+
+    <script>
+        const githubLink = "https://github.com/ahmetoezturk";
+        
+        // Elemente aus dem DOM holen
+        const overlay = document.getElementById('customAlertOverlay');
+        const okButton = document.getElementById('alertOk');
+        const githubButton = document.getElementById('alertGithub');
+        
+        // Funktion zum Schließen des Modals
+        const closeAlert = () => {
+            overlay.style.display = 'none';
+        };
+
+        // 1. Klick-Handler für "Verstanden (Zur Demo)"
+        okButton.addEventListener('click', closeAlert);
+
+        // 2. Klick-Handler für "Zum GitHub Repository"
+        githubButton.addEventListener('click', () => {
+            // Schließt das Modal
+            closeAlert(); 
+            // Leitet in einem NEUEN Tab zu GitHub weiter
+            window.open(githubLink, '_blank'); 
+        });
+
+    </script>
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const githubLink = "https://github.com/ahmetoezturk";
+        
+        // Elemente aus dem DOM holen
+        const overlay = document.getElementById('customAlertOverlay');
+        const okButton = document.getElementById('alertOk');
+        const githubButton = document.getElementById('alertGithub');
+        
+        // 🛑 WICHTIGE PRÜFUNG MIT localStorage 🛑
+        // Prüfen, ob der Benutzer das Modal schon einmal gesehen hat
+        const hasSeenAlert = localStorage.getItem('demoAlertShown');
+
+        if (!hasSeenAlert) {
+            // Wenn der Schlüssel NICHT existiert, zeigen wir das Modal
+            overlay.style.display = 'flex';
+        }
+
+        // Funktion, die das Modal schließt UND den Zustand speichert
+        const closeAndSetStorage = () => {
+            overlay.style.display = 'none';
+            // Speichert den Schlüssel, damit das Modal beim nächsten Laden NICHT mehr gezeigt wird
+            localStorage.setItem('demoAlertShown', 'true'); 
+        };
+
+        // 1. Klick-Handler für "Verstanden (Zur Demo)"
+        okButton.addEventListener('click', closeAndSetStorage);
+
+        // 2. Klick-Handler für "Zum GitHub Repository"
+        githubButton.addEventListener('click', () => {
+            // Schließt das Modal und speichert den Zustand
+            closeAndSetStorage(); 
+            // Leitet in einem NEUEN Tab zu GitHub weiter
+            window.open(githubLink, '_blank'); 
+        });
+
+        // HINWEIS: Hier kommt der Rest deiner Mitarbeiter-Listen-Logik,
+        // falls sie nicht bereits in db.js oder an anderer Stelle definiert ist.
+        // Bsp.:
+        /*
+        const tbody = document.querySelector('tbody');
+        workers.forEach(worker => {
+            // ... (Code zum Erstellen der Tabellenzeilen) ...
+        });
+        */
+    });
+</script>
+</body>
+</html>
