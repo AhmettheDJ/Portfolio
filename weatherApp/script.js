@@ -1,4 +1,4 @@
-  const apiKey = "Your_API_KEY"; //Ich habe die API key aus sicherheitsgründen entfernt für repo
+  const apiKey = "683c946e1a3e32bafd54aeb29377e095"; //ich muss die api key wieder einfügen wegen webseite
         const baseUrl = "https://api.openweathermap.org/data/2.5/";
         
         // DOM-Elemente
@@ -185,3 +185,4 @@
             currentDate.textContent = now.toLocaleDateString('de-DE', options);
 
         }
+
